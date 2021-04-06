@@ -1,0 +1,20 @@
+
+<div class="container mt-5">
+    <div>
+        <button class="btn btn-link my-2" (click)="openFormModal()">Create Event</button>
+        <div class="row d-flex w-100 border border-3 p-3" *ngFor = "let event of events">
+            <div class="col-7">
+                <app-event
+                    [event]="event"
+                ></app-event>
+            </div>
+            <div class="col-5 d-flex justify-content-center align-items-center">
+                <p *ngIf="errMsg" class="text-alert">{{errMsg}}</p>
+                <button class="btn btn-link me-1" (click)="onClickGetAttendees(event)">View Attendees</button>
+                    <span>| </span>
+                    <button class="btn btn-link" (click)="onClickDeleteEvent(event['evtID'])">Delete Event</button>
+            </div>
+        </div>
+    </div>
+ </div>
+

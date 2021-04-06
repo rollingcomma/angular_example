@@ -28,7 +28,10 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.styl"
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "src/styles.styl",
+              "src/styles.css",
+              "node_modules/ngx-toastr/toastr.css"
             ],
             "scripts": []
           },
@@ -65,7 +68,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "frontend:build"
+            "browserTarget": "frontend:build",
+            "proxyConfig": "src/proxy.conf.json"
           },
           "configurations": {
             "production": {

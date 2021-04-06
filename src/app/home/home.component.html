@@ -1,0 +1,14 @@
+<div>
+    <div class="w-100 d-flex tab-header justify-content-end mr-5 my-2 border-btm">
+        <h2 *ngIf="user['role'] =='Admin'" routerLink="/home/admin-event" routerLinkActive="active"> Event Manager</h2>
+        <h2 routerLink="/home" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"> Main</h2>
+        <h2 routerLink="/home/my-event" routerLinkActive="active">My Events</h2>
+        <h2 class="btn btn-link my-2 my-sm-0" (click)="onLogout()">Logout</h2>
+        <h2>({{user.userName}})</h2>
+    </div>
+    
+    <div class="container d-flex justify-content-center align-items-center">
+        <router-outlet></router-outlet> 
+    </div>
+
+</div>

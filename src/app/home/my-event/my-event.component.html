@@ -1,0 +1,8 @@
+<div class="container mt-5">
+    <div *ngFor="let event of events" class='row'>
+       <div class="col-4">{{event.name}}</div>
+       <div class="col-2">{{event.date}}</div>
+       <div class="col-2">{{event.time}}</div>
+       <button class="col-4" (click)="onClickCancelAttending(event['evtID'])">No Longer Atttending</button>
+    </div>
+</div>

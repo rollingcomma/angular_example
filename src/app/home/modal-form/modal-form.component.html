@@ -1,0 +1,51 @@
+<form [formGroup]="service.eventFormModel" autocomplete="off" (ngSubmit)="onSubmitAddEvent()">
+    <div class="modal-header">
+        <h2 class="modal-title" id="modal-basic-title">Add a New Event</h2>
+        <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <p *ngIf="errMsg.length > 0">{{errMsg}}</p>
+        <div class="form-group required">
+            <label for="eventName">Event Name:</label>
+            <div class="input-group">
+                <input id="eventName" formControlName="EventName" class="form-control" placeholder="name">
+                <label class="text-danger" *ngIf="service.eventFormModel.get('EventName').touched && service.eventFormModel.get('EventName').errors?.required">This field is mandatory. </label>
+            </div>
+        </div>
+        
+        <div class="form-group required">
+            <label for="eventDate">Event Date:</label>
+            <div class="input-group">
+                <input id="eventDate" formControlName="EventDate" class="form-control" placeholder="dd-MM" name="dp" ngbDatepicker #d="ngbDatepicker">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar" viewBox="0 0 16 16">
+                    <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
+                  </svg></button></div>
+            </div>
+            <label class="text-danger" *ngIf="service.eventFormModel.get('EventDate').touched && service.eventFormModel.get('EventDate').errors?.required">This field is mandatory. </label>
+        </div>
+        <div class="form-group required">
+            <label for="eventTime">Event Time:</label>
+            <div class="input-group">
+                <input id="eventTime" type="text"  formControlName="EventTime" class="form-control" placeholder="HH:mm">
+                <label class="text-danger" *ngIf="service.eventFormModel.get('EventTime').touched && service.eventFormModel.get('EventTime').errors?.required">This field is mandatory. </label>
+                <label class="text-danger" *ngIf="service.eventFormModel.get('EventTime').touched && service.eventFormModel.get('EventTime').errors?.pattern">The time is invalid. </label>
+            </div>
+        </div>
+    
+        <div class="form-group required">
+            <label for="eventDesc">Event Description:</label>
+            <div class="input-group">
+                <input id="eventDesc"  formControlName="EventDesc" class="form-control" placeholder="add some info...">
+                <label class="text-danger" *ngIf="service.eventFormModel.get('EventDesc').touched && service.eventFormModel.get('EventDesc').errors?.required">This field is mandatory. </label>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <button type="submit" class="btn btn-outline-dark" (click)="onClick()" [disabled]="service.eventFormModel.invalid">Submit</button>
+        </div>
+    </div>
+</form>

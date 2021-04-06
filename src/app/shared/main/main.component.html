@@ -1,0 +1,13 @@
+
+<div class="w-100 mt-5">
+    <div class="row d-flex border border-3 p-3" *ngFor = "let event of events">
+        <div class="col-9">
+            <app-event
+                [event]="event"
+            ></app-event>
+        </div>
+       <div class="col-3 d-flex justify-content-center align-items-center">
+           <button class="btn btn-secondary" (click)="onClickAttend(event['evtID'])">Attend</button>
+       </div>
+    </div>
+</div>
